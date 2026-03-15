@@ -557,6 +557,264 @@
             }
         }
 
+        /* ===== FORCE LIGHT COLOURS IN DARK MODE (prevents Chrome Auto Dark) ===== */
+        @media (prefers-color-scheme: dark) {
+            html {
+                background: #FAF8F4;
+                background-color: #FAF8F4;
+                color-scheme: light only;
+            }
+
+            body {
+                background: #FAF8F4;
+                background-color: #FAF8F4;
+                color: #1A1714;
+            }
+
+            /* Nav */
+            nav {
+                background: rgba(245, 242, 237, 0.92);
+                background-color: #F5F2ED;
+                border-bottom-color: #E0DCD5;
+            }
+
+            .logo {
+                color: #1A1714;
+            }
+
+            .logo span {
+                color: #5C4D3C;
+            }
+
+            .nav-cta {
+                background: #5C4D3C;
+                background-color: #5C4D3C;
+                color: #FFFFFF;
+            }
+
+            .nav-cta:hover {
+                background: #4A3E30;
+                background-color: #4A3E30;
+                color: #FFFFFF;
+            }
+
+            /* Hero */
+            .hero {
+                background: #5C4D3C;
+                background-color: #5C4D3C;
+                border-bottom-color: #E0DCD5;
+            }
+
+            .hero-tagline {
+                color: #5C4D3C;
+            }
+
+            .hero h1 {
+                color: #1A1714;
+            }
+
+            .hero h1 em {
+                color: #5C4D3C;
+            }
+
+            .hero-sub {
+                color: #6B6560;
+            }
+
+            .hero-cta {
+                background: #5C4D3C;
+                background-color: #5C4D3C;
+                color: #FFFFFF;
+                box-shadow: 0 2px 8px rgba(92, 77, 60, 0.15);
+            }
+
+            .hero-cta:hover {
+                background: #4A3E30;
+                background-color: #4A3E30;
+                color: #FFFFFF;
+                box-shadow: 0 4px 16px rgba(92, 77, 60, 0.2);
+            }
+
+            .hero-icon {
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+
+            .hero-note {
+                color: #9A9590;
+            }
+
+            /* Scripture Quote */
+            .scripture-band {
+                background: #F5F2ED;
+                background-color: #F5F2ED;
+                border-bottom-color: #E0DCD5;
+            }
+
+            .scripture-band blockquote {
+                color: #1A1714;
+            }
+
+            .scripture-band cite {
+                color: #8A7F6E;
+            }
+
+            /* Features */
+            .features {
+                background: #F5F0E8;
+                background-color: #F5F0E8;
+                border-bottom-color: #E0DCD5;
+            }
+
+            .features-header h2 {
+                color: #1A1714;
+            }
+
+            .features-header p {
+                color: #6B6560;
+            }
+
+            .feature-card {
+                background: #FFFFFF;
+                background-color: #FFFFFF;
+                border-color: #E0DCD5;
+            }
+
+            .feature-card:hover {
+                box-shadow: 0 6px 24px rgba(92, 77, 60, 0.08);
+            }
+
+            .feature-icon {
+                background: rgba(92, 77, 60, 0.08);
+                background-color: rgba(92, 77, 60, 0.08);
+            }
+
+            .feature-icon svg {
+                color: #5C4D3C;
+            }
+
+            .feature-card h3 {
+                color: #1A1714;
+            }
+
+            .feature-card p {
+                color: #6B6560;
+            }
+
+            /* Trust */
+            .trust {
+                background: #F5F2ED;
+                background-color: #F5F2ED;
+                border-bottom-color: #E0DCD5;
+            }
+
+            .trust h2 {
+                color: #1A1714;
+            }
+
+            .trust-item {
+                background: #FAF8F4;
+                background-color: #FAF8F4;
+                border-color: #EBE7E1;
+            }
+
+            .trust-check {
+                background: #5C4D3C;
+                background-color: #5C4D3C;
+            }
+
+            .trust-check svg {
+                color: #FFFFFF;
+            }
+
+            .trust-item h4 {
+                color: #1A1714;
+            }
+
+            .trust-item p {
+                color: #6B6560;
+            }
+
+            /* Philosophy */
+            .philosophy {
+                background: #5C4D3C;
+                background-color: #5C4D3C;
+                color: #F5F2ED;
+            }
+
+            .philosophy h2 {
+                color: #F5F2ED;
+            }
+
+            .philosophy p {
+                color: rgba(245, 242, 237, 0.8);
+            }
+
+            .philosophy em {
+                color: #F5F2ED;
+            }
+
+            /* Final CTA */
+            .final-cta {
+                background: #FAF8F4;
+                background-color: #FAF8F4;
+                border-bottom-color: #E0DCD5;
+            }
+
+            .final-cta h2 {
+                color: #1A1714;
+            }
+
+            .final-cta p {
+                color: #6B6560;
+            }
+
+            .final-cta-btn {
+                background: #5C4D3C;
+                background-color: #5C4D3C;
+                color: #FFFFFF;
+                box-shadow: 0 2px 8px rgba(92, 77, 60, 0.15);
+            }
+
+            .final-cta-btn:hover {
+                background: #4A3E30;
+                background-color: #4A3E30;
+                color: #FFFFFF;
+                box-shadow: 0 4px 16px rgba(92, 77, 60, 0.2);
+            }
+
+            /* Generic section overrides */
+            section {
+                background-color: #FAF8F4;
+                color: #1A1714;
+            }
+
+            section p {
+                color: #6B6560;
+            }
+
+            section h2 {
+                color: #1A1714;
+            }
+
+            /* Footer */
+            footer {
+                background: #F5F2ED;
+                background-color: #F5F2ED;
+            }
+
+            footer p {
+                color: #9A9590;
+            }
+
+            footer a {
+                color: #8A7F6E;
+            }
+
+            footer a:hover {
+                color: #5C4D3C;
+            }
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 600px) {
             .hero { padding: 120px 20px 60px; }
