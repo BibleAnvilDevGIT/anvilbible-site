@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Bible Anvil — Where Scripture Shapes You</title>
     <meta name="description" content="Bible Anvil is a serious Bible study app built for deep Scripture engagement. Parallel translations, intelligent highlighting, hierarchical tagging, and true offline-first architecture. Your study. Your data. Always.">
     <meta name="keywords" content="Bible study app, Bible software, parallel Bible, Scripture study, offline Bible app, Bible tagging, Bible highlighting, serious Bible study">
@@ -13,6 +13,7 @@
     <meta property="og:description" content="A serious Bible study app for deep Scripture engagement. Parallel translations, intelligent highlighting, hierarchical tagging. Offline-first. Your study, your data, always.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bibleanvil.com">
+    <meta property="og:image" content="https://bibleanvil.com/icon_1024.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -36,6 +37,9 @@
         }
     }
     </script>
+
+    <link rel="icon" type="image/png" href="icon_1024.png">
+    <link rel="apple-touch-icon" href="icon_1024.png">
 
     <!-- Fonts: Inter (UI), Literata (Scripture) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -208,6 +212,14 @@
         .hero-cta svg {
             width: 18px;
             height: 18px;
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         .hero-note {
@@ -557,6 +569,7 @@
         <div class="fade-in">
             <div class="hero-tagline">Where Scripture Shapes You</div>
         </div>
+        <img src="icon_1024.png" alt="Bible Anvil icon" class="hero-icon fade-in" width="160" height="160">
         <h1 class="fade-in fade-in-delay-1">Study the Bible with <em>depth</em> and <em>clarity</em></h1>
         <p class="hero-sub fade-in fade-in-delay-2">A serious study tool for those who go deeper. Parallel translations, intelligent highlighting, hierarchical tagging. Offline-first. Your study, your data, always.</p>
         <div class="fade-in fade-in-delay-3">
