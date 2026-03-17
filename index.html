@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" style="color-scheme: light only;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#5C4D3C">
-    <meta name="color-scheme" content="light only">
-    <meta name="supported-color-schemes" content="light only">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bible Anvil — Where Scripture Shapes You</title>
     <meta name="description" content="Bible Anvil is a serious Bible study app built for deep Scripture engagement. Parallel translations, intelligent highlighting, hierarchical tagging, and true offline-first architecture. Your study. Your data. Always.">
     <meta name="keywords" content="Bible study app, Bible software, parallel Bible, Scripture study, offline Bible app, Bible tagging, Bible highlighting, serious Bible study">
@@ -16,7 +13,6 @@
     <meta property="og:description" content="A serious Bible study app for deep Scripture engagement. Parallel translations, intelligent highlighting, hierarchical tagging. Offline-first. Your study, your data, always.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bibleanvil.com">
-    <meta property="og:image" content="https://bibleanvil.com/icon_1024.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -41,457 +37,490 @@
     }
     </script>
 
-    <link rel="icon" type="image/png" href="icon_1024.png">
-    <link rel="apple-touch-icon" href="icon_1024.png">
-
-    <!-- Fonts -->
+    <!-- Fonts: Inter (UI), Literata (Scripture) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap" rel="stylesheet">
 
     <style>
-        :root { color-scheme: light only !important; }
-        html { color-scheme: light only !important; }
-
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --surface-primary: #F5F2ED;
+            --surface-reading: #FAF8F4;
+            --surface-elevated: #FFFFFF;
+            --surface-subtle: #EDE9E3;
+
+            --text-primary: #1A1714;
+            --text-secondary: #6B6560;
+            --text-tertiary: #9A9590;
+
+            --accent-primary: #5C4D3C;
+            --accent-secondary: #8A7F6E;
+            --accent-hover: #4A3E30;
+            --accent-subtle: rgba(92, 77, 60, 0.08);
+
+            --border: #E0DCD5;
+            --divider: #EBE7E1;
+
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-scripture: 'Literata', Georgia, serif;
+        }
+
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            min-height: 100%;
-            background: #FAF8F4 !important;
-            background-color: #FAF8F4 !important;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #1A1714 !important;
-            background: #FAF8F4 !important;
-            background-color: #FAF8F4 !important;
-            min-height: 100vh;
+            font-family: var(--font-ui);
+            color: var(--text-primary);
+            background: var(--surface-primary);
             line-height: 1.6;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(245, 242, 237, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-scripture);
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-primary);
+            color: #FFFFFF;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .nav-cta svg {
+            width: 14px;
+            height: 14px;
         }
 
         /* ===== HERO ===== */
         .hero {
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 140px 24px 80px;
             text-align: center;
-            padding: 80px 24px;
-            background: #5C4D3C !important;
-            background-color: #5C4D3C !important;
-        }
-
-        .hero-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 28px;
-            margin-bottom: 32px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-        }
-
-        .hero-wordmark {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(40px, 7vw, 72px);
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            line-height: 1.1;
-        }
-
-        .hero-wordmark .bible {
-            color: #A89880 !important;
-        }
-
-        .hero-wordmark .anvil {
-            color: #C4A87A !important;
+            background: var(--surface-reading);
+            border-bottom: 1px solid var(--border);
         }
 
         .hero-tagline {
-            font-family: 'Literata', Georgia, serif;
-            font-style: italic;
-            font-size: clamp(16px, 2.5vw, 22px);
-            color: #C4A87A !important;
-            margin-bottom: 16px;
-            letter-spacing: 0.01em;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
         }
 
-        .hero-description {
-            font-size: 16px;
-            color: #A89880 !important;
-            max-width: 480px;
+        .hero h1 {
+            font-family: var(--font-scripture);
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--text-primary);
+            max-width: 680px;
+            margin: 0 auto 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent-primary);
+        }
+
+        .hero-sub {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 520px;
             margin: 0 auto 40px;
             line-height: 1.7;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .hero-cta-primary {
+        .hero-cta {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #FAF8F4 !important;
-            background-color: #FAF8F4 !important;
-            color: #4A3D2F !important;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .hero-cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-cta-primary svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .hero-cta-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent !important;
-            background-color: transparent !important;
-            color: #A89880 !important;
+            background: var(--accent-primary);
+            color: #FFFFFF;
             padding: 14px 32px;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 500;
             text-decoration: none;
-            border: 1px solid #A89880;
-            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 8px rgba(92, 77, 60, 0.15);
         }
 
-        .hero-cta-secondary:hover {
-            background: rgba(168, 152, 128, 0.1) !important;
-            background-color: rgba(168, 152, 128, 0.1) !important;
-            color: #C4A87A !important;
+        .hero-cta:hover {
+            background: var(--accent-hover);
             transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(92, 77, 60, 0.2);
         }
 
-        .hero-build-note {
-            margin-top: 24px;
+        .hero-cta svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-note {
+            margin-top: 16px;
             font-size: 13px;
-            color: #8A7F6E !important;
+            color: var(--text-tertiary);
         }
 
-        /* ===== SECTIONS (shared) ===== */
-        .section {
+        /* ===== SCRIPTURE QUOTE ===== */
+        .scripture-band {
+            padding: 48px 24px;
+            text-align: center;
+            background: var(--surface-primary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .scripture-band blockquote {
+            font-family: var(--font-scripture);
+            font-size: clamp(18px, 2.5vw, 22px);
+            font-style: italic;
+            color: var(--text-primary);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .scripture-band cite {
+            display: block;
+            margin-top: 12px;
+            font-family: var(--font-ui);
+            font-style: normal;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-secondary);
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
             padding: 80px 24px;
+            background: var(--surface-reading);
+            border-bottom: 1px solid var(--border);
         }
 
-        .section-inner {
-            max-width: 960px;
+        .features-inner {
+            max-width: 880px;
             margin: 0 auto;
         }
 
-        .section-label {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #8A7F6E !important;
-            margin-bottom: 12px;
+        .features-header {
+            text-align: center;
+            margin-bottom: 56px;
         }
 
-        .section-heading {
-            font-family: 'Literata', Georgia, serif;
-            font-size: clamp(24px, 4vw, 38px);
+        .features-header h2 {
+            font-family: var(--font-scripture);
+            font-size: clamp(24px, 3.5vw, 34px);
             font-weight: 400;
-            line-height: 1.25;
+            color: var(--text-primary);
+            margin-bottom: 12px;
             letter-spacing: -0.01em;
-            margin-bottom: 16px;
         }
 
-        /* ===== PROBLEM SECTION ===== */
-        .problem-section {
-            background: #FAF8F4 !important;
-            background-color: #FAF8F4 !important;
-        }
-
-        .problem-section .section-heading {
-            color: #1A1714 !important;
-            max-width: 640px;
-        }
-
-        .problem-section p {
-            font-size: 16px;
-            color: #6B6560 !important;
-            max-width: 640px;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        .problem-section p:last-of-type {
-            margin-bottom: 0;
-        }
-
-        /* ===== FEATURES SECTION ===== */
-        .features-section {
-            background: #F5F0E8 !important;
-            background-color: #F5F0E8 !important;
-        }
-
-        .features-section .section-heading {
-            color: #1A1714 !important;
-        }
-
-        .features-section .section-desc {
-            font-size: 16px;
-            color: #6B6560 !important;
-            max-width: 560px;
-            margin-bottom: 48px;
-            line-height: 1.7;
+        .features-header p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto;
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
         }
 
         .feature-card {
-            background: #FFFFFF !important;
-            background-color: #FFFFFF !important;
-            border: 1px solid #E0DCD5 !important;
-            border-radius: 12px;
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: 10px;
             padding: 28px 24px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(92, 77, 60, 0.1);
+            box-shadow: 0 6px 24px rgba(92, 77, 60, 0.08);
         }
 
-        .feature-icon-box {
-            width: 44px;
-            height: 44px;
-            background: #5C4D3C !important;
-            background-color: #5C4D3C !important;
-            border-radius: 10px;
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-subtle);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
         }
 
-        .feature-icon-box svg {
-            width: 22px;
-            height: 22px;
-            color: #C4A87A !important;
+        .feature-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--accent-primary);
         }
 
-        .feature-title {
+        .feature-card h3 {
             font-size: 15px;
             font-weight: 600;
-            color: #1A1714 !important;
+            color: var(--text-primary);
             margin-bottom: 8px;
         }
 
-        .feature-desc {
+        .feature-card p {
             font-size: 14px;
-            color: #6B6560 !important;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
-        /* ===== POSITION SECTION ===== */
-        .position-section {
-            background: #5C4D3C !important;
-            background-color: #5C4D3C !important;
+        /* ===== TRUST SECTION ===== */
+        .trust {
+            padding: 80px 24px;
+            background: var(--surface-primary);
+            border-bottom: 1px solid var(--border);
         }
 
-        .position-section .section-label {
-            color: #8A7F6E !important;
-        }
-
-        .position-section .section-heading {
-            color: #FAF8F4 !important;
-            max-width: 560px;
-        }
-
-        .position-section p {
-            color: #A89880 !important;
-            font-size: 16px;
-            max-width: 560px;
-            line-height: 1.7;
-            margin-bottom: 40px;
-        }
-
-        .spectrum {
-            max-width: 480px;
+        .trust-inner {
+            max-width: 640px;
             margin: 0 auto;
-            padding-top: 8px;
+            text-align: center;
         }
 
-        .spectrum-line {
-            position: relative;
-            height: 3px;
-            background: #6B5D4D !important;
-            background-color: #6B5D4D !important;
-            border-radius: 2px;
-            margin-bottom: 12px;
+        .trust h2 {
+            font-family: var(--font-scripture);
+            font-size: clamp(24px, 3.5vw, 34px);
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 24px;
         }
 
-        .spectrum-marker {
-            position: absolute;
-            top: 50%;
-            left: 55%;
-            transform: translate(-50%, -50%);
-            width: 14px;
-            height: 14px;
-            background: #C4A87A !important;
-            background-color: #C4A87A !important;
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(196, 168, 122, 0.25);
+        .trust-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            text-align: left;
+            margin-top: 32px;
         }
 
-        .spectrum-labels {
+        .trust-item {
             display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 16px 20px;
+            background: var(--surface-reading);
+            border-radius: 8px;
+            border: 1px solid var(--divider);
         }
 
-        .spectrum-end {
-            color: #8A7F6E !important;
+        .trust-check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
         }
 
-        .spectrum-label {
-            color: #C4A87A !important;
+        .trust-check svg {
+            width: 12px;
+            height: 12px;
+            color: #FFFFFF;
+        }
+
+        .trust-item h4 {
+            font-size: 15px;
             font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
         }
 
-        /* ===== PHILOSOPHY SECTION ===== */
-        .philosophy-section {
-            background: #FAF8F4 !important;
-            background-color: #FAF8F4 !important;
+        .trust-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
-        .philosophy-section .section-heading {
-            color: #1A1714 !important;
-            max-width: 600px;
+        /* ===== PHILOSOPHY ===== */
+        .philosophy {
+            padding: 80px 24px;
+            background: var(--accent-primary);
+            color: #F5F2ED;
         }
 
-        .philosophy-section p {
+        .philosophy-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .philosophy h2 {
+            font-family: var(--font-scripture);
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #F5F2ED;
+        }
+
+        .philosophy p {
             font-size: 16px;
-            color: #6B6560 !important;
-            max-width: 600px;
             line-height: 1.8;
+            color: rgba(245, 242, 237, 0.8);
             margin-bottom: 16px;
         }
 
-        .philosophy-section em {
-            color: #1A1714 !important;
+        .philosophy p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .philosophy em {
+            color: #F5F2ED;
             font-style: normal;
             font-weight: 500;
         }
 
-        /* ===== CONTACT SECTION ===== */
-        .contact-section {
-            background: #FAF8F4 !important;
-            background-color: #FAF8F4 !important;
-            border-top: 1px solid #E0DCD5;
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            padding: 80px 24px;
+            text-align: center;
+            background: var(--surface-reading);
+            border-bottom: 1px solid var(--border);
         }
 
-        .contact-section .section-heading {
-            color: #1A1714 !important;
+        .final-cta h2 {
+            font-family: var(--font-scripture);
+            font-size: clamp(24px, 3.5vw, 34px);
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 12px;
         }
 
-        .contact-section p {
+        .final-cta p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-primary);
+            color: #FFFFFF;
+            padding: 14px 36px;
+            border-radius: 8px;
             font-size: 16px;
-            color: #6B6560 !important;
-            max-width: 480px;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .contact-email {
-            display: inline-block;
-            font-size: 18px;
             font-weight: 500;
-            color: #5C4D3C !important;
             text-decoration: none;
-            border-bottom: 2px solid #C4A87A;
-            padding-bottom: 2px;
-            transition: color 0.2s ease;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 8px rgba(92, 77, 60, 0.15);
         }
 
-        .contact-email:hover {
-            color: #4A3D2F !important;
+        .final-cta-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(92, 77, 60, 0.2);
+        }
+
+        .final-cta-btn svg {
+            width: 18px;
+            height: 18px;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            padding: 40px 24px;
+            padding: 32px 24px;
             text-align: center;
-            background: #4A3D2F !important;
-            background-color: #4A3D2F !important;
-        }
-
-        .footer-brand {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #8A7F6E !important;
-            margin-bottom: 8px;
+            background: var(--surface-primary);
         }
 
         footer p {
             font-size: 13px;
-            color: #6B5D4D !important;
+            color: var(--text-tertiary);
         }
 
-        .version-tag {
-            display: inline-block;
-            margin-top: 12px;
-            font-size: 11px;
-            color: #6B5D4D !important;
-            letter-spacing: 0.05em;
+        footer a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-primary);
         }
 
         /* ===== ANIMATIONS ===== */
         @media (prefers-reduced-motion: no-preference) {
-            .fadeUp {
+            .fade-in {
                 opacity: 0;
-                transform: translateY(20px);
-                animation: fadeUp 0.7s ease forwards;
+                transform: translateY(16px);
+                animation: fadeIn 0.6s ease forwards;
             }
 
-            .fadeUp-d1 { animation-delay: 0.1s; }
-            .fadeUp-d2 { animation-delay: 0.2s; }
-            .fadeUp-d3 { animation-delay: 0.3s; }
-            .fadeUp-d4 { animation-delay: 0.4s; }
-            .fadeUp-d5 { animation-delay: 0.5s; }
-            .fadeUp-d6 { animation-delay: 0.6s; }
+            .fade-in-delay-1 { animation-delay: 0.1s; }
+            .fade-in-delay-2 { animation-delay: 0.2s; }
+            .fade-in-delay-3 { animation-delay: 0.3s; }
+            .fade-in-delay-4 { animation-delay: 0.4s; }
 
-            @keyframes fadeUp {
+            @keyframes fadeIn {
                 to {
                     opacity: 1;
                     transform: translateY(0);
@@ -499,167 +528,179 @@
             }
         }
 
-        /* ===== RESPONSIVE 960px ===== */
-        @media (max-width: 960px) {
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* ===== RESPONSIVE 640px ===== */
-        @media (max-width: 640px) {
-            .hero {
-                padding: 100px 20px 60px;
-            }
-
-            .hero-wordmark {
-                letter-spacing: 0.08em;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .spectrum {
-                max-width: 100%;
-            }
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .hero { padding: 120px 20px 60px; }
+            .features { padding: 60px 20px; }
+            .trust { padding: 60px 20px; }
+            .philosophy { padding: 60px 20px; }
+            .final-cta { padding: 60px 20px; }
+            .feature-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Nav -->
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="logo">Bible <span>Anvil</span></a>
+            <a href="https://github.com/BibleAnvilDevGIT/bible-anvil/releases/download/v1.0.0/app-release.apk" class="nav-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download
+            </a>
+        </div>
+    </nav>
+
     <!-- Hero -->
     <section class="hero">
-        <img src="icon_1024.png" alt="Bible Anvil icon" class="hero-icon fadeUp" width="160" height="160">
-        <h1 class="hero-wordmark fadeUp fadeUp-d1"><span class="bible">Bible</span> <span class="anvil">Anvil</span></h1>
-        <p class="hero-tagline fadeUp fadeUp-d2">Where Scripture shapes you</p>
-        <p class="hero-description fadeUp fadeUp-d3">A serious study tool for those who go deeper. Parallel translations, intelligent highlighting, hierarchical tagging. Offline-first. Your study, your data, always.</p>
-        <div class="hero-buttons fadeUp fadeUp-d4">
-            <a href="https://translations.bibleanvil.com/app-release.apk" class="hero-cta-primary">
+        <div class="fade-in">
+            <div class="hero-tagline">Where Scripture Shapes You</div>
+        </div>
+        <h1 class="fade-in fade-in-delay-1">Study the Bible with <em>depth</em> and <em>clarity</em></h1>
+        <p class="hero-sub fade-in fade-in-delay-2">A serious study tool for those who go deeper. Parallel translations, intelligent highlighting, hierarchical tagging. Offline-first. Your study, your data, always.</p>
+        <div class="fade-in fade-in-delay-3">
+            <a href="https://github.com/BibleAnvilDevGIT/bible-anvil/releases/download/v1.0.0/app-release.apk" class="hero-cta">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Download for Android
             </a>
-            <a href="#early-access" class="hero-cta-secondary">Get in Touch</a>
+            <p class="hero-note">Free. No account required. Works offline.</p>
         </div>
-        <p class="hero-build-note fadeUp fadeUp-d5">Free. No account required. Works offline.</p>
     </section>
 
-    <!-- Problem -->
-    <section class="section problem-section">
-        <div class="section-inner">
-            <div class="section-label">The Problem</div>
-            <h2 class="section-heading">Most Bible apps are built for casual reading. Serious study deserves serious tools.</h2>
-            <p>You want to compare translations, tag themes across books, build a personal index of insights. But the apps you find are cluttered with devotionals, social features, and reading plans that get in the way of the text itself.</p>
-            <p>Bible Anvil strips away the noise. No accounts. No cloud dependency. No AI telling you what Scripture means. Just powerful tools that let you engage with the Word on your own terms.</p>
-        </div>
+    <!-- Scripture Quote -->
+    <section class="scripture-band">
+        <blockquote class="fade-in">
+            Is not my word like as a fire? saith the Lord; and like a hammer that breaketh the rock in pieces?
+        </blockquote>
+        <cite class="fade-in fade-in-delay-1">Jeremiah 23:29</cite>
     </section>
 
     <!-- Features -->
-    <section class="section features-section">
-        <div class="section-inner">
-            <div class="section-label">Features</div>
-            <h2 class="section-heading">Built for serious study</h2>
-            <p class="section-desc">Every feature designed to deepen your engagement with Scripture, not distract from it.</p>
+    <section class="features">
+        <div class="features-inner">
+            <div class="features-header fade-in">
+                <h2>Built for serious study</h2>
+                <p>Every feature designed to deepen your engagement with Scripture, not distract from it.</p>
+            </div>
             <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon-box">
+                <div class="feature-card fade-in fade-in-delay-1">
+                    <div class="feature-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/></svg>
                     </div>
-                    <h3 class="feature-title">Side-by-Side Translations</h3>
-                    <p class="feature-desc">Compare up to 7 translations in parallel, synchronised verse by verse. See the text through multiple lenses simultaneously.</p>
+                    <h3>Parallel translations</h3>
+                    <p>Compare 1 to 7 translations side by side, synchronised verse by verse. See the text through multiple lenses.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
-                    </div>
-                    <h3 class="feature-title">Tags &amp; Organisation</h3>
-                    <p class="feature-desc">Hierarchical tagging with unlimited depth. Tag verses, ranges, and topics. Build your own theological index over time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3 class="feature-title">Offline First</h3>
-                    <p class="feature-desc">Everything works with zero internet. Your Bible, your notes, your tags, your highlights. On your device. Always available.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                    </div>
-                    <h3 class="feature-title">Cross-References</h3>
-                    <p class="feature-desc">Navigate the web of Scripture. Follow cross-references between passages and build connections across the entire Bible.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-box">
+                <div class="feature-card fade-in fade-in-delay-2">
+                    <div class="feature-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                     </div>
-                    <h3 class="feature-title">Highlights &amp; Stars</h3>
-                    <p class="feature-desc">Intelligent highlighting that auto-applies across the entire Bible. Highlight every occurrence of a word or pattern instantly.</p>
+                    <h3>Intelligent highlighting</h3>
+                    <p>Create rules that auto-apply across the entire Bible. Highlight every occurrence of a word or pattern instantly.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <div class="feature-card fade-in fade-in-delay-3">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
                     </div>
-                    <h3 class="feature-title">Knowledge Graph</h3>
-                    <p class="feature-desc">Your study builds a living map. Tags, notes, highlights, and cross-references connect into a personal knowledge graph.</p>
+                    <h3>Hierarchical tagging</h3>
+                    <p>Organise your study with unlimited depth. Tag verses, ranges, and topics. Build your own theological index.</p>
+                </div>
+                <div class="feature-card fade-in fade-in-delay-4">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Offline-first</h3>
+                    <p>Everything works with zero internet. Your Bible, your notes, your tags, your highlights. On your device. Always.</p>
+                </div>
+                <div class="feature-card fade-in fade-in-delay-1">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Notes and study stack</h3>
+                    <p>Long-press any verse to expand an inline study space. Add notes, compare translations, and cross-reference without leaving the text.</p>
+                </div>
+                <div class="feature-card fade-in fade-in-delay-2">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3>Full-text search</h3>
+                    <p>Search across all translations, notes, and tags simultaneously. Scripture is a lens, not a destination.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Position -->
-    <section class="section position-section">
-        <div class="section-inner" style="text-align: center;">
-            <div class="section-label">Positioning</div>
-            <h2 class="section-heading" style="margin-left: auto; margin-right: auto;">Between casual apps and academic software</h2>
-            <p style="margin-left: auto; margin-right: auto;">Bible Anvil sits in the gap. More powerful than a reading app. More usable than a seminary tool. Built for the person who studies seriously but wants software that stays out of the way.</p>
-            <div class="spectrum">
-                <div class="spectrum-line">
-                    <div class="spectrum-marker"></div>
+    <!-- Trust Section -->
+    <section class="trust">
+        <div class="trust-inner">
+            <h2>Your study. Your data. Always.</h2>
+            <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.7;">Bible Anvil is built on a simple promise: your study work belongs to you. Not to a server. Not to a subscription. Not to a company that might disappear.</p>
+            <div class="trust-grid">
+                <div class="trust-item fade-in">
+                    <div class="trust-check">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                        <h4>Your data lives on your device</h4>
+                        <p>All tags, notes, highlights, and study data stored locally. No cloud dependency.</p>
+                    </div>
                 </div>
-                <div class="spectrum-labels">
-                    <span class="spectrum-end">Casual</span>
-                    <span class="spectrum-label">Bible Anvil</span>
-                    <span class="spectrum-end">Professional</span>
+                <div class="trust-item fade-in fade-in-delay-1">
+                    <div class="trust-check">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                        <h4>Export everything, anytime</h4>
+                        <p>Full data export in standard formats. Your study work is never locked behind a paywall.</p>
+                    </div>
+                </div>
+                <div class="trust-item fade-in fade-in-delay-2">
+                    <div class="trust-check">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                        <h4>No account required</h4>
+                        <p>Download, open, study. No sign-up, no email harvesting, no friction between you and Scripture.</p>
+                    </div>
+                </div>
+                <div class="trust-item fade-in fade-in-delay-3">
+                    <div class="trust-check">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <div>
+                        <h4>11 translations, all free</h4>
+                        <p>KJV, ASV, YLT, Geneva, Darby, Webster, World English Bible, and more. Public domain. Yours forever.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Philosophy -->
-    <section class="section philosophy-section">
-        <div class="section-inner">
-            <div class="section-label">Philosophy</div>
-            <h2 class="section-heading">We believe AI should never interpret Scripture for you</h2>
+    <section class="philosophy">
+        <div class="philosophy-inner fade-in">
+            <h2>We believe AI should never interpret Scripture for you</h2>
             <p>Bible Anvil gives you <em>tools</em>, not <em>answers</em>. The app helps you organise, search, compare, and annotate. It never tells you what a passage means.</p>
             <p>Your understanding grows through your own work with the text. The highlighting engine shows you patterns. The tagging system builds your index. The parallel reader gives you perspective. But the insight? <em>That's yours.</em></p>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section contact-section" id="early-access">
-        <div class="section-inner">
-            <div class="section-label">Get in Touch</div>
-            <h2 class="section-heading">Questions, feedback, or just want to talk Scripture?</h2>
-            <p>Bible Anvil is built by one person with a deep conviction that Scripture study tools should respect the reader. If you have thoughts, ideas, or want to follow the journey, reach out.</p>
-            <a href="mailto:founder@bibleanvil.com" class="contact-email">founder@bibleanvil.com</a>
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2 class="fade-in">Begin your study</h2>
+        <p class="fade-in fade-in-delay-1">Download Bible Anvil and start building a study system that lasts a lifetime.</p>
+        <div class="fade-in fade-in-delay-2">
+            <a href="https://github.com/BibleAnvilDevGIT/bible-anvil/releases/download/v1.0.0/app-release.apk" class="final-cta-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download for Android
+            </a>
+            <p class="hero-note">Free. Offline-first. No strings attached.</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-brand">Bible Anvil</div>
-        <p>&copy; 2026 Bible Anvil. Built in sunny South Africa.</p>
-        <span class="version-tag">v2.0</span>
+        <p>&copy; 2026 Bible Anvil. Built in Nieuwoudtville, South Africa.</p>
     </footer>
 
     <!-- Scroll-triggered animations -->
@@ -674,10 +715,11 @@
                 });
             }, { threshold: 0.1 });
 
-            document.querySelectorAll('.section-inner, .feature-card').forEach(el => {
-                el.classList.add('fadeUp');
-                el.style.animationPlayState = 'paused';
-                observer.observe(el);
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (!el.closest('.hero')) {
+                    el.style.animationPlayState = 'paused';
+                    observer.observe(el);
+                }
             });
         }
     </script>
